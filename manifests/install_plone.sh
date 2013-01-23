@@ -1,7 +1,7 @@
 #!/bin/sh
 
 PLONE_MAJOR=4.3
-PLONE_MINOR=4.3b1
+PLONE_MINOR=4.3b2
 
 UI_OPTIONS="standalone --password=admin"
 
@@ -58,17 +58,25 @@ fi
 
 for fn in src buildout.cfg base.cfg develop.cfg
 do
-    if [ ! -f ${SHARED_DIR}/plone/$fn ]; then
+    if [ ! -e ${SHARED_DIR}/plone/$fn ]; then
         echo $fn
         mv Plone/zinstance/$fn ${SHARED_DIR}/plone
         $AS_VAGRANT ln -s ${SHARED_DIR}/plone/$fn Plone/zinstance
     fi
 done
 
-for script in ${SHARED_DIR}/manifests/*.sh
+for script in ${SHARED_DIR}/manifests/guest_scripts/*
 do
     if [ ! -f `basename $script` ]; then
         $AS_VAGRANT cp $script .
+        chmod 755 *.sh
+    fi
+done
+
+for script in ${SHARED_DIR}/manifests/host_scripts/*
+do
+    if [ ! -f `basename $script` ]; then
+        $AS_VAGRANT cp $script ${SHARED_DIR}/plone
         chmod 755 *.sh
     fi
 done
