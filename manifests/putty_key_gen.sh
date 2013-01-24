@@ -1,6 +1,8 @@
 #!/bin/sh
 
 if [ ! -f .ssh/id_rsa ]; then
+    echo Creating an ssh key, authorizing it, and putting a
+    echo Putty-compatible key file in shared directory.
     cd .ssh
     # generate openssh-style key pair
     /usr/bin/ssh-keygen -q -t rsa -N "" -f id_rsa

@@ -11,6 +11,7 @@ UI_URL=https://launchpad.net/plone/${PLONE_MAJOR}/${PLONE_MINOR}/+download/${PLO
 
 AS_VAGRANT="sudo -u vagrant"
 SHARED_DIR="/vagrant"
+SHARED_FILES="src buildout.cfg base.cfg develop.cfg"
 VHOME="/home/vagrant"
 
 if [ ! -f $PLONE_TARBALL ]; then
@@ -48,22 +49,23 @@ if [ ! -d Plone ]; then
         exit 1
     fi
     cd ${VHOME}
-fi
 
-if [ ! -d ${SHARED_DIR}/plone ]; then
-    echo Moving commonly edited source files into shared directory
-    echo and linking them back to Plone instance.
-    $AS_VAGRANT mkdir ${SHARED_DIR}/plone
-fi
-
-for fn in src buildout.cfg base.cfg develop.cfg
-do
-    if [ ! -e ${SHARED_DIR}/plone/$fn ]; then
-        echo $fn
-        mv Plone/zinstance/$fn ${SHARED_DIR}/plone
-        $AS_VAGRANT ln -s ${SHARED_DIR}/plone/$fn Plone/zinstance
+    # put .cfg and src into the shared directory,
+    # and link back to them.
+    if [ ! -d ${SHARED_DIR}/plone ]; then
+        echo Moving commonly edited source files into shared directory
+        echo and linking them back to Plone instance.
+        $AS_VAGRANT mkdir ${SHARED_DIR}/plone
+        for fn in $SHARED_FILES
+            do
+                if [ ! -e ${SHARED_DIR}/plone/$fn ]; then
+                    echo $fn
+                    mv Plone/zinstance/$fn ${SHARED_DIR}/plone
+                    $AS_VAGRANT ln -s ${SHARED_DIR}/plone/$fn Plone/zinstance
+                fi
+            done
     fi
-done
+fi
 
 for script in ${SHARED_DIR}/manifests/guest_scripts/*
 do
