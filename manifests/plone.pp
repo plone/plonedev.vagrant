@@ -32,6 +32,11 @@ class plone {
   #   ensure => present,
   # }
 
+  # used for creating a PuTTy-compatible key file
+  package { "putty-tools":
+    ensure => present,
+  }
+
 }
 
 include plone

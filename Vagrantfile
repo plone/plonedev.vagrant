@@ -40,17 +40,24 @@ Vagrant::Config.run do |config|
   # are contained in a directory path relative to this Vagrantfile.
   # You will need to create the manifests directory and a manifest in
   # the file precise32.pp in the manifests_path directory.
-  #
+
+  # Run apt-get update as a separate step in order to avoid
+  # package install errors
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "manifests"
     puppet.manifest_file  = "aptgetupdate.pp"
   end
 
+  # ensure we have the packages we need
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "manifests"
     puppet.manifest_file  = "plone.pp"
   end
 
+  # Create a Putty-style keyfile for Windows users
+  config.vm.provision :shell, :path => "manifests/putty_key_gen.sh"
+
+  # install Plone
   config.vm.provision :shell, :path => "manifests/install_plone.sh"
 
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
