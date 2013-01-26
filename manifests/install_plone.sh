@@ -74,11 +74,3 @@ do
         chmod 755 *.sh
     fi
 done
-
-for script in ${SHARED_DIR}/manifests/host_scripts/*
-do
-    if [ ! -f `basename $script` ]; then
-        $AS_VAGRANT cp $script ${SHARED_DIR}/plone
-        chmod 755 *.sh
-    fi
-done

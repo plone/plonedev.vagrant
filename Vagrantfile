@@ -55,7 +55,10 @@ Vagrant::Config.run do |config|
   end
 
   # Create a Putty-style keyfile for Windows users
-  config.vm.provision :shell, :path => "manifests/putty_key_gen.sh"
+  config.vm.provision :shell do |shell|
+    shell.path = "manifests/host_setup.sh"
+    shell.args = RUBY_PLATFORM
+  end
 
   # install Plone
   config.vm.provision :shell, :path => "manifests/install_plone.sh"
