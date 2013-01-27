@@ -28,7 +28,9 @@ echo $1 | if grep -q mingw; then
 
     for script in ${SHARED_DIR}/manifests/windows_host_scripts/*
     do
-        if [ ! -f `basename $script` ]; then
+        target=`basename $script`
+        if [ ! -f ${SHARED_DIR}/$target ]; then
+            echo Copying `basename $script` ...
             $AS_VAGRANT cp $script ${SHARED_DIR}
         fi
     done
@@ -36,7 +38,9 @@ else
     # Host environment is probably something *nix
     for script in ${SHARED_DIR}/manifests/host_scripts/*
     do
-        if [ ! -f `basename $script` ]; then
+        target=`basename $script`
+        if [ ! -f ${SHARED_DIR}/$target ]; then
+            echo Copying `basename $script` ...
             $AS_VAGRANT cp $script ${SHARED_DIR}
             chmod 755 *.sh
         fi
