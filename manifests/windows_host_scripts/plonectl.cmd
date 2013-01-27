@@ -5,11 +5,11 @@ set keyfile=insecure_putty_key.ppk
 set port=2222
 set prog=plink.exe
 
-# Search for prog on path
+REM Search for prog on path
 set found=
 for %%i in (%path%) do if exist %%i\%prog% set found=%%i\%prog%
 
-# if not found, use default path
+REM if not found, use default path
 if [%found%]==[] (
     if exist %defpath%\%prog% (
         set found=%defpath%\%prog%
