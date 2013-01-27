@@ -1,37 +1,35 @@
 #!/bin/sh
 
-PLONE_MAJOR=4.3
-PLONE_MINOR=4.3b2
-
+UI_URL=https://launchpad.net/plone/4.3/4.3b2/+download/Plone-4.3b2-UnifiedInstaller-r2.tgz
 UI_OPTIONS="standalone --password=admin"
 
-UI_NAME=Plone-${PLONE_MINOR}-UnifiedInstaller
-PLONE_TARBALL=${UI_NAME}.tgz
-UI_URL=https://launchpad.net/plone/${PLONE_MAJOR}/${PLONE_MINOR}/+download/${PLONE_TARBALL}
+if [ "x$1" != "x" ]; then
+    UI_URL=$1
+fi
 
 AS_VAGRANT="sudo -u vagrant"
 SHARED_DIR="/vagrant"
 SHARED_FILES="src buildout.cfg base.cfg develop.cfg"
 VHOME="/home/vagrant"
+UI_GLOB="Plone-*-UnifiedInstaller"
 
-if [ ! -f $PLONE_TARBALL ]; then
-    echo Downloading Plone Unified Installer
+if [ ! -f ${UI_GLOB}*.tgz ]; then
+    echo Downloading Plone Unified Installer from $UI_URL
     $AS_VAGRANT wget -q $UI_URL
     if [ $? -gt 0 ]; then
         # remove partial download
-        rm $PLONE_TARBALL
+        rm ${UI_GLOB}*.tgz
         echo Download of Plone Unified Installer unsuccessful.
         echo Plone install failed
         exit 1
     fi
 fi
 
-if [ ! -d $UI_NAME ]; then
-    $AS_VAGRANT tar xf $PLONE_TARBALL
+if [ ! -d $UI_GLOB ]; then
+    $AS_VAGRANT tar xf ${UI_GLOB}*.tgz
     if [ $? -gt 0 ]; then
         # remove partial download
-        rm $PLONE_TARBALL
-        rm -r $UI_NAME
+        rm ${UI_GLOB}
         echo Unpack of Plone Unified Installer unsuccessful.
         echo Plone install failed
         exit 1
@@ -39,7 +37,7 @@ if [ ! -d $UI_NAME ]; then
 fi
 
 if [ ! -d Plone ]; then
-    cd $UI_NAME
+    cd ${UI_GLOB}
     echo Running Plone Unified Installer
     $AS_VAGRANT ./install.sh ${UI_OPTIONS} --target=${VHOME}/Plone
     if [ $? -gt 0 ]; then

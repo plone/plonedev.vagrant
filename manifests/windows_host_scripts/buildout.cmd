@@ -5,13 +5,17 @@ set keyfile=insecure_putty_key.ppk
 set port=2222
 set prog=plink.exe
 
+# Search for prog on path
 set found=
 for %%i in (%path%) do if exist %%i\%prog% set found=%%i\%prog%
+
+# if not found, use default path
 if [%found%]==[] (
     if exist %defpath%\%prog% (
         set found=%defpath%\%prog%
     )
 )
+
 if [%found%]==[] (
     echo Unable to find %prog%. Please make sure %prog% is installed
     echo and that your executable path includes the directory containing it.
@@ -28,5 +32,7 @@ if not exist %keyfile% (
     exit /B
 )
 
-echo %found% -i %keyfile% -P %port% vagrant@localhost ./run.sh %1 %2 %3 %4 %5
-%found% -i %keyfile% -P %port% vagrant@localhost ./run.sh %1 %2 %3 %4 %5
+set command_line=%found% -i %keyfile% -P %port% vagrant@localhost ./runbin.sh buildout -c develop.cfg %1 %2 %3 %4 %5 %6
+echo %command_line%
+%command_line%
+echo.

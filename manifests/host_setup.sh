@@ -30,7 +30,6 @@ echo $1 | if grep -q mingw; then
     do
         if [ ! -f `basename $script` ]; then
             $AS_VAGRANT cp $script ${SHARED_DIR}
-            chmod 755 *.sh
         fi
     done
 else
