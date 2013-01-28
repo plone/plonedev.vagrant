@@ -32,7 +32,7 @@ if not exist %keyfile% (
     exit /B
 )
 
-set command_line=%found% -i %keyfile% -P %port% vagrant@localhost ./runbin.sh buildout -c develop.cfg %1 %2 %3 %4 %5 %6
+set command_line=%found% -i %keyfile% -P %port% vagrant@localhost ./runbin.sh buildout %1 %2 %3 %4 %5 %6
 echo %command_line%
 %command_line%
 echo.

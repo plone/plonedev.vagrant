@@ -1,12 +1,152 @@
-plonedev_vagrant
+PloneDev-Vagrant
 ================
 
-A Vagrant setup for a plone-development virtualbox.
+PloneDev-Vagrant is a kit for setting up a — hopefully — easy to use
+development environment for Plone in a hosted virtual machine.
 
-This is an exploration of feasibility for having a distributable Vagrant kit that
-will provision a virtual box with a running Plone that may be used for development
-purposes.
+The kit uses the VirtualBox for the virtual machine and the Vagrant box setup
+system. It should run on any host machine for which Vagrant is available; that
+includes Windows, OS X and Linux. Both VirtualBox and Vagrant are open-source.
 
-Part of the goal is to get the *.cfg files and ./src directory set up to be editable
-from the host side and to have shell or .bat commands to start, fg, stop Plone from
-the host side.
+The PloneDev-Vagrant kit is meant to be easy to setup and use. Plone's key
+development files are set up to be accessible and editable with host-based
+editors. Host commands are provided to run Plone and buildout. So little or no
+knowledge of the VirtualBox guest environment (which happens to be Ubuntu Linux)
+should be required.
+
+Installation
+------------
+
+1. Install VirtualBox: https://www.virtualbox.org/
+
+2. Install Vagrant: http://www.vagrantup.com
+
+3. If you are using Windows, install the Putty ssh kit:
+http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html. Install all
+the binaries, or at least putty.exe and plink.exe.
+
+4. Download and unpack PloneDev-Vagrant
+https://github.com/smcmahon/plonedev_vagrant/archive/master.zip.
+
+5. Open a command prompt; change directory into the plonedev_vagrant-master
+directory and issue the command "vagrant up".
+
+6. Go for lunch or a long coffee break. "vagrant up" is going to download a
+virtual box kit (unless you already happen to have a match installed),
+download Plone, install Plone, and setup some convenience scripts. On Windows,
+it will also generate an ssh key pair that's usable with Putty.
+
+7. Look to see if everything looks good. The last thing you should see in the
+command window is a success message from the Plone Unified Installer. The
+virtual machine will be running at this point.
+
+Using the Vagrant-installed VirtualBox
+--------------------------------------
+
+You may now start and stop the virtual machine by issuing command in the same
+directory::
+
+    c:\...> vagrant suspend
+
+stops the virtual machine, saving an image of its state so that you may later
+restart with::
+
+    c:\...> vagrant resume
+
+Run "vagrant" with no command line arguments to see what else you can do.
+
+Finally, you may remove the VirtualBox (deleting its image) with the command::
+
+    c:\...> vagrant destroy
+
+Running Plone and buildout
+--------------------------
+
+To run buildout, just issue the command "buildout" (buildout.sh on a Unix-
+workalike host). This will run buildout; add command line arguments as
+desired::
+
+    c:\...> buildout -c develop.cfg
+
+To start Plone in the foreground (so its messages run to the command window),
+use the command::
+
+    c:\...> plonectl fg
+
+Plone will be connected to port 8080 on the host machine, so that you should
+be able to crank up a web browser, point it at http://localhost:8080 and see
+Zope/Plone.
+
+Stop foreground Plone by using the site-setup maintenance stop button or by
+just pressing ctrl-c.
+
+If you use ctrl-c, you've got a little cleanup to do. Plone will still be
+running on the virtual box. Kill it with the command::
+
+    c:\...> kill_plone
+
+You may also use start|stop|status|run arguments with plonectl.
+
+Editing Plone configuration and source files
+--------------------------------------------
+
+After running "vagrant up", you should have a plone subdirectory. In it,
+you'll find your buildout configuration files and a "src" directory. These are
+the matching items from a normal Plone installation. You may add development
+packages to the src directory and edit all the files.
+
+All of this is happening in a directory that is shared with the guest
+operating system, and the .cfg files and src directory are linked back to the
+working copy of Plone on the guest machine.
+
+Using the VirtualBox directly
+-----------------------------
+
+How you get a command prompt on your "guest" machine will depend on your host
+operating system. On Unix workalikes, use the command::
+
+    $ vagrant ssh
+
+If your host OS is Windows, use::
+
+    c:\...> putty_ssh
+
+The "putty_ssh command" runs the Putty SSH program using command line
+parameters that connect to the virtual machine at port 2222 and use a special
+ssh key created for putty. That key, by the way, is created and stored in a
+way that is not password-protected, so it should not be regarded as adequately
+secured for any sensitive purpose.
+
+What doesn't work
+-----------------
+
+Using "plonectl debug" from the host side isn't going to work. However, you
+may use your ssh command to get a guest OS prompt and run it there. You'll
+just need to know a little about how to operate at a Linux "bash" command
+prompt.
+
+The same is true for running ZopeSkel to generate a package skeleton, or doing
+anything else that requires command-line interaction.
+
+What's under the hood
+---------------------
+
+VirtualBox provides the virtual machine facilities. Vagrant makes setting it
+up, including port forwarding and shared folders, convenient. Vagrant also
+provides a wrapper around the Puppet and shell provisioning system.
+
+The guest operating system is the most recent Ubuntu LTS (12.0.4, Precise
+Pangolin), 32-bit (so that it will run on a 32- or 64-bit host).
+
+After setting up the operating system, Vagrant's provisioning system is used
+to load the required system packages, download the Plone Unified Installer,
+run the install, and set up the convenience scripts and share directory.
+
+Problems or suggestions?
+------------------------
+
+File a ticket at https://github.com/smcmahon/plonedev_vagrant/issues. If this
+kit becomes mainstream, the tracker may move to http://dev.plone.org.
+
+Steve McMahon, steve@dcn.org
+
