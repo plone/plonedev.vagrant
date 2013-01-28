@@ -17,7 +17,7 @@ should be required.
 Installation
 ------------
 
-1. Install VirtualBox: https://www.virtualbox.org/
+1. Install VirtualBox: https://www.virtualbox.org
 
 2. Install Vagrant: http://www.vagrantup.com
 
