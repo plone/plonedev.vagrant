@@ -22,7 +22,7 @@ Installation
 
 6. Go for lunch or a long coffee break. "vagrant up" is going to download a virtual box kit (unless you already happen to have a match installed), download Plone, install Plone, and set up some convenience scripts. On Windows, it will also generate an ssh key pair that's usable with Putty.
 
-7. Look to see if everything looks good. The last thing you should see in the command window is a success message from the Plone Unified Installer. The virtual machine will be running at this point.
+7. Look to see if the install ran well. The last thing you should see in the command window is a success message from the Plone Unified Installer. The virtual machine will be running at this point.
 
 Using the Vagrant-installed VirtualBox
 --------------------------------------
