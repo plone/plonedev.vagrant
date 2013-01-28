@@ -17,28 +17,28 @@ should be required.
 Installation
 ------------
 
-1. Install VirtualBox: https://www.virtualbox.org
+    1. Install VirtualBox: https://www.virtualbox.org
 
-2. Install Vagrant: http://www.vagrantup.com
+    2. Install Vagrant: http://www.vagrantup.com
 
-3. If you are using Windows, install the Putty ssh kit:
-http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html. Install all
-the binaries, or at least putty.exe and plink.exe.
+    3. If you are using Windows, install the Putty ssh kit:
+    http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html. Install all
+    the binaries, or at least putty.exe and plink.exe.
 
-4. Download and unpack PloneDev-Vagrant
-https://github.com/smcmahon/plonedev_vagrant/archive/master.zip.
+    4. Download and unpack PloneDev-Vagrant
+    https://github.com/smcmahon/plonedev_vagrant/archive/master.zip.
 
-5. Open a command prompt; change directory into the plonedev_vagrant-master
-directory and issue the command "vagrant up".
+    5. Open a command prompt; change directory into the plonedev_vagrant-master
+    directory and issue the command "vagrant up".
 
-6. Go for lunch or a long coffee break. "vagrant up" is going to download a
-virtual box kit (unless you already happen to have a match installed),
-download Plone, install Plone, and setup some convenience scripts. On Windows,
-it will also generate an ssh key pair that's usable with Putty.
+    6. Go for lunch or a long coffee break. "vagrant up" is going to download a
+    virtual box kit (unless you already happen to have a match installed),
+    download Plone, install Plone, and set up some convenience scripts. On Windows,
+    it will also generate an ssh key pair that's usable with Putty.
 
-7. Look to see if everything looks good. The last thing you should see in the
-command window is a success message from the Plone Unified Installer. The
-virtual machine will be running at this point.
+    7. Look to see if everything looks good. The last thing you should see in the
+    command window is a success message from the Plone Unified Installer. The
+    virtual machine will be running at this point.
 
 Using the Vagrant-installed VirtualBox
 --------------------------------------
