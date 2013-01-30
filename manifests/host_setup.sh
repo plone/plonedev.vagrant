@@ -22,7 +22,8 @@ echo $1 | if grep -q mingw; then
         # create a putty-compatible key file
         /usr/bin/puttygen id_rsa -O private -o id_rsa.ppk
         # copy putty keyfile into shared directory
-        cp id_rsa.ppk /vagrant/insecure_putty_key.ppk
+        cp id_rsa.ppk ${SHARED_DIR}/insecure_putty_key.ppk
+        chmod 400 ${SHARED_DIR}/insecure_putty_key.ppk
         cd ~
     fi
 
@@ -42,7 +43,7 @@ else
         if [ ! -f ${SHARED_DIR}/$target ]; then
             echo Copying `basename $script` ...
             $AS_VAGRANT cp $script ${SHARED_DIR}
-            chmod 755 *.sh
+            chmod 755 ${SHARED_DIR}/*.sh
         fi
     done
 fi

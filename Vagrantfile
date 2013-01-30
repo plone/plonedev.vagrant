@@ -1,103 +1,37 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+UI_URL = "https://launchpad.net/plone/4.3/4.3b2/+download/Plone-4.3b2-UnifiedInstaller-r3.tgz"
+UI_OPTIONS = "standalone --password=admin"
+
 Vagrant::Config.run do |config|
-  # All Vagrant configuration is done here. The most common configuration
-  # options are documented and commented below. For a complete reference,
-  # please see the online documentation at vagrantup.com.
+    config.vm.box = "precise32"
+    config.vm.box_url = "http://files.vagrantup.com/precise32.box"
 
-  # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "precise32"
+    config.vm.forward_port 8080, 8080
 
-  # The url from where the 'config.vm.box' box will be fetched if it
-  # doesn't already exist on the user's system.
-  config.vm.box_url = "http://files.vagrantup.com/precise32.box"
+    # Run apt-get update as a separate step in order to avoid
+    # package install errors
+    config.vm.provision :puppet do |puppet|
+        puppet.manifests_path = "manifests"
+        puppet.manifest_file  = "aptgetupdate.pp"
+    end
 
-  # Boot with a GUI so you can see the screen. (Default is headless)
-  # config.vm.boot_mode = :gui
+    # ensure we have the packages we need
+    config.vm.provision :puppet do |puppet|
+        puppet.manifests_path = "manifests"
+        puppet.manifest_file  = "plone.pp"
+    end
 
-  # Assign this VM to a host-only network IP, allowing you to access it
-  # via the IP. Host-only networks can talk to the host machine as well as
-  # any other machines on the same network, but cannot be accessed (through this
-  # network interface) by any external networks.
-  # config.vm.network :hostonly, "192.168.33.10"
+    # Create a Putty-style keyfile for Windows users
+    config.vm.provision :shell do |shell|
+        shell.path = "manifests/host_setup.sh"
+        shell.args = RUBY_PLATFORM
+    end
 
-  # Assign this VM to a bridged network, allowing you to connect directly to a
-  # network using the host's network device. This makes the VM appear as another
-  # physical device on your network.
-  # config.vm.network :bridged
-
-  # Forward a port from the guest to the host, which allows for outside
-  # computers to access the VM, whereas host only networking does not.
-  config.vm.forward_port 8080, 8080
-
-  # Share an additional folder to the guest VM. The first argument is
-  # an identifier, the second is the path on the guest to mount the
-  # folder, and the third is the path on the host to the actual folder.
-  # config.vm.share_folder "v-data", "/vagrant_data", "../data"
-
-  # Enable provisioning with Puppet stand alone.  Puppet manifests
-  # are contained in a directory path relative to this Vagrantfile.
-  # You will need to create the manifests directory and a manifest in
-  # the file precise32.pp in the manifests_path directory.
-
-  # Run apt-get update as a separate step in order to avoid
-  # package install errors
-  config.vm.provision :puppet do |puppet|
-    puppet.manifests_path = "manifests"
-    puppet.manifest_file  = "aptgetupdate.pp"
-  end
-
-  # ensure we have the packages we need
-  config.vm.provision :puppet do |puppet|
-    puppet.manifests_path = "manifests"
-    puppet.manifest_file  = "plone.pp"
-  end
-
-  # Create a Putty-style keyfile for Windows users
-  config.vm.provision :shell do |shell|
-    shell.path = "manifests/host_setup.sh"
-    shell.args = RUBY_PLATFORM
-  end
-
-  # install Plone
-  config.vm.provision :shell, :path => "manifests/install_plone.sh"
-
-  # Enable provisioning with chef solo, specifying a cookbooks path, roles
-  # path, and data_bags path (all relative to this Vagrantfile), and adding
-  # some recipes and/or roles.
-  #
-  # config.vm.provision :chef_solo do |chef|
-  #   chef.cookbooks_path = "../my-recipes/cookbooks"
-  #   chef.roles_path = "../my-recipes/roles"
-  #   chef.data_bags_path = "../my-recipes/data_bags"
-  #   chef.add_recipe "mysql"
-  #   chef.add_role "web"
-  #
-  #   # You may also specify custom JSON attributes:
-  #   chef.json = { :mysql_password => "foo" }
-  # end
-
-  # Enable provisioning with chef server, specifying the chef server URL,
-  # and the path to the validation key (relative to this Vagrantfile).
-  #
-  # The Opscode Platform uses HTTPS. Substitute your organization for
-  # ORGNAME in the URL and validation key.
-  #
-  # If you have your own Chef Server, use the appropriate URL, which may be
-  # HTTP instead of HTTPS depending on your configuration. Also change the
-  # validation key to validation.pem.
-  #
-  # config.vm.provision :chef_client do |chef|
-  #   chef.chef_server_url = "https://api.opscode.com/organizations/ORGNAME"
-  #   chef.validation_key_path = "ORGNAME-validator.pem"
-  # end
-  #
-  # If you're using the Opscode platform, your validator client is
-  # ORGNAME-validator, replacing ORGNAME with your organization name.
-  #
-  # IF you have your own Chef Server, the default validation client name is
-  # chef-validator, unless you changed the configuration.
-  #
-  #   chef.validation_client_name = "ORGNAME-validator"
+    # install Plone
+        config.vm.provision :shell do |shell|
+        shell.path = "manifests/install_plone.sh"
+        shell.args = UI_URL + " '" + UI_OPTIONS + "'"
+    end
 end

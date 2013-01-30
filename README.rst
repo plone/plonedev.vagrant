@@ -24,6 +24,8 @@ Installation
 
 7. Look to see if the install ran well. The last thing you should see in the command window is a success message from the Plone Unified Installer. The virtual machine will be running at this point.
 
+While running "vagrant up", feel free to ignore messages like "stdin: is not a tty" and "warning: Could not retrieve fact fqdn". They have no significance in this context.
+
 Using the Vagrant-installed VirtualBox
 --------------------------------------
 
@@ -52,8 +54,9 @@ To start Plone in the foreground (so its messages run to the command window), us
 
     c:\...> plonectl fg
 
-Plone will be connected to port 8080 on the host machine, so that you should be able to crank up a web browser, point it at http://localhost:8080 and see
-Zope/Plone.
+Plone will be connected to port 8080 on the host machine, so that you should be able to crank up a web browser, point it at http://localhost:8080 and see Zope/Plone.
+
+Plone is installed with an administrative user with id "admin" and password "admin".
 
 Stop foreground Plone by using the site-setup maintenance stop button or by just pressing ctrl-c.
 
@@ -100,6 +103,11 @@ Using "plonectl debug" from the host side isn't going to work. However, you may 
 
 The same is true for running ZopeSkel to generate a package skeleton, or doing anything else that requires command-line interaction.
 
+A different version of Plone or Linux?
+--------------------------------------
+
+Want to install a different version of Plone? Just edit Vagrantfile to specify a different Unified Installer URL. Do that before running "vagrant up" for the first time. You may do the same thing to specify a different VirtualBox.
+
 What's under the hood
 ---------------------
 
@@ -116,3 +124,7 @@ File a ticket at https://github.com/smcmahon/plonedev_vagrant/issues. If this ki
 
 Steve McMahon, steve@dcn.org
 
+License
+-------
+
+Code included with this kit is licensed under the MIT Licence, http://opensource.org/licenses/MIT. Documentation is CC Attribution Unported, http://creativecommons.org/licenses/by/3.0/.

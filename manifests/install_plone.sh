@@ -1,11 +1,9 @@
 #!/bin/sh
 
-UI_URL=https://launchpad.net/plone/4.3/4.3b2/+download/Plone-4.3b2-UnifiedInstaller-r2.tgz
-UI_OPTIONS="standalone --password=admin"
+# usage: ./install_plone.sh UI_URL UI_OPTIONS
 
-if [ "x$1" != "x" ]; then
-    UI_URL=$1
-fi
+UI_URL=$1
+UI_OPTIONS=$2
 
 AS_VAGRANT="sudo -u vagrant"
 SHARED_DIR="/vagrant"
