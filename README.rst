@@ -3,9 +3,14 @@ PloneDev-Vagrant
 
 PloneDev-Vagrant is a kit for setting up a — hopefully — easy to use development environment for Plone in a hosted virtual machine.
 
-The kit uses the VirtualBox for the virtual machine and the Vagrant box setup system. It should run on any host machine for which Vagrant is available; that includes Windows, OS X and Linux. Both VirtualBox and Vagrant are open-source.
+The kit uses the VirtualBox for the virtual machine and the Vagrant box setup system.
+It should run on any host machine for which Vagrant is available; that includes Windows Vista+, OS X and Linux.
+Both VirtualBox and Vagrant are open-source.
 
-The PloneDev-Vagrant kit is meant to be easy to setup and use. Plone's key development files are set up to be accessible and editable with host-based editors. Host commands are provided to run Plone and buildout. So little or no knowledge of the VirtualBox guest environment (which happens to be Ubuntu Linux) should be required.
+The PloneDev-Vagrant kit is meant to be easy to setup and use. 
+Plone's key development files are set up to be accessible and editable with host-based editors. 
+Host commands are provided to run Plone and buildout.
+So little or no knowledge of the VirtualBox guest environment (which happens to be Ubuntu Linux) should be required.
 
 Installation
 ------------
@@ -18,7 +23,7 @@ Installation
 
 4. Download and unpack PloneDev-Vagrant https://github.com/smcmahon/plonedev_vagrant/archive/master.zip.
 
-5. Open a command prompt; change directory into the plonedev_vagrant-master directory and issue the command "vagrant up".
+5. Open a command prompt; change directory into the plonedev_vagrant-master directory (twice; it's two folders deep) and issue the command "vagrant up".
 
 6. Go for lunch or a long coffee break. "vagrant up" is going to download a virtual box kit (unless you already happen to have a match installed), download Plone, install Plone, and set up some convenience scripts. On Windows, it will also generate an ssh key pair that's usable with Putty.
 
