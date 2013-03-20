@@ -1,0 +1,4 @@
+4.3rc1-rc1 (2013-03-20)
+-----------------------
+
+- Update to use Plone 4.3rc1 (rev 2 of unified installer)
