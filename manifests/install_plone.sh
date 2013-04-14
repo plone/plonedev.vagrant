@@ -44,6 +44,9 @@ if [ ! -d Plone ]; then
         echo Plone install failed
         exit 1
     fi
+    cd ~vagrant/Plone/zinstance
+    echo Building developer components
+    sudo -u vagrant bin/buildout -c develop.cfg 2> /dev/null
     cd ${VHOME}
 
     # put .cfg and src into the shared directory,
