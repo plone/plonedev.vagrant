@@ -6,7 +6,7 @@ UI_OPTIONS = "standalone --password=admin"
 
 Vagrant::Config.run do |config|
     config.vm.box = "precise32"
-    config.vm.box_url = "http://files.vagrantup.com/precise32.box"
+    config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-i386-vagrant-disk1.box"
 
     config.vm.forward_port 8080, 8080
 

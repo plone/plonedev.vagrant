@@ -1,3 +1,8 @@
+4.3.1 (unreleased)
+------------------
+
+- Use Ubuntu's current URL for Precise; avoid bug upgrade download.
+
 4.3 (2013-04-14)
 ----------------
 
