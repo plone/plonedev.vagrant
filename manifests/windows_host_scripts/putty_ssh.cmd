@@ -1,20 +1,23 @@
 @echo off
 set defpath="\Program Files\PuTTy"
+set defpath_x64="\Program Files (x86)\PuTTy"
 
 set keyfile=insecure_putty_key.ppk
 set port=2222
 set prog=putty.exe
 
 set found=
-for %%i in (%path%) do if exist %%i\%prog% set found=%%i\%prog%
-if [%found%]==[] (
-    if exist %defpath%\%prog% (
-        set found=%defpath%\%prog%
-    )
+if exist %defpath%\%prog% (
+    set found=%defpath%\%prog%
+)
+if exist %defpath_x64%\%prog% (
+    set found=%defpath_x64%\%prog%
 )
 if [%found%]==[] (
-    echo Unable to find %prog%. Please make sure %prog% is installed
-    echo and that your executable path includes the directory containing it.
+    echo Unable to find %prog%. Please make sure %prog% is installed.
+    echo If it is installed and you're still getting this error,
+    echo edit this .cmd file to specify the path to Putty's install
+    echo directory.
     exit /B
 )
 

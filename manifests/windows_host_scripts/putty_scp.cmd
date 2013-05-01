@@ -13,15 +13,17 @@ if [%1]==[] (
 
 
 set found=
-for %%i in (%path%) do if exist %%i\%prog% set found=%%i\%prog%
-if [%found%]==[] (
-    if exist %defpath%\%prog% (
-        set found=%defpath%\%prog%
-    )
+if exist %defpath%\%prog% (
+    set found=%defpath%\%prog%
+)
+if exist %defpath_x64%\%prog% (
+    set found=%defpath_x64%\%prog%
 )
 if [%found%]==[] (
-    echo Unable to find %prog%. Please make sure %prog% is installed
-    echo and that your executable path includes the directory containing it.
+    echo Unable to find %prog%. Please make sure %prog% is installed.
+    echo If it is installed and you're still getting this error,
+    echo edit this .cmd file to specify the path to Putty's install
+    echo directory.
     exit /B
 )
 
