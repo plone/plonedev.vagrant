@@ -1,6 +1,9 @@
 4.3.1 (unreleased)
 ------------------
 
+- The kill_plone script would fail if there was no space at the start
+  of ps output. Fixed.
+
 - Revise strategy for windows putty commands so that they'll
   search x86 program files on x64 systems. Give up on searching
   path. (Thanks, dthomas218)
