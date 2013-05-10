@@ -1,5 +1,6 @@
 @echo off
 set defpath="\Program Files\PuTTy"
+set defpath_x64="\Program Files (x86)\PuTTy"
 
 set keyfile=insecure_putty_key.ppk
 set port=2222

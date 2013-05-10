@@ -31,5 +31,5 @@ if not exist %keyfile% (
     exit /B
 )
 
-echo %found% -i %keyfile% -P %port% vagrant@localhost %1 %2 %3 %4 %5
-%found% -i %keyfile% -P %port% vagrant@localhost %1 %2 %3 %4 %5
+echo %found% -i %keyfile% -P %port% vagrant@localhost %1 %2 %3 %4 %5 %6 %7 %8
+%found% -i %keyfile% -P %port% vagrant@localhost %1 %2 %3 %4 %5 %6 %7 %8
