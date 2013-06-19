@@ -5,6 +5,9 @@
 
 - Add git.
 
+- Create a plink.cmd for Windows. Use it for launching plonectl, kill_plone,
+  buildout. Fixes issue #2 (thanks, albieback).
+
 - The kill_plone script would fail if there was no space at the start
   of ps output. Fixed.
 
