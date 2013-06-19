@@ -15,6 +15,9 @@ class plone {
   package { "libxslt-dev":
     ensure => present,
   }
+  package { "git":
+    ensure => present,
+  }
 
   # Optional packages to enable indexing of office/pdf docs
   # package { "wv":

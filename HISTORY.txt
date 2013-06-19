@@ -1,5 +1,9 @@
-4.3.1 (unreleased)
+4.3.1 (2013-06-19)
 ------------------
+
+- Update to Plone 4.3.1
+
+- Add git.
 
 - The kill_plone script would fail if there was no space at the start
   of ps output. Fixed.
