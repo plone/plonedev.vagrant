@@ -1,7 +1,7 @@
 PloneDev-Vagrant
 ================
 
-PloneDev-Vagrant is a kit for setting up a — hopefully — easy to use development environment for Plone in a hosted virtual machine.
+PloneDev-Vagrant is a kit for setting up an easy to use development environment for Plone in a hosted virtual machine.
 
 The kit uses the VirtualBox for the virtual machine and the Vagrant box setup system.
 It should run on any host machine for which Vagrant is available; that includes Windows Vista+, OS X and Linux.
@@ -133,3 +133,4 @@ License
 -------
 
 Code included with this kit is licensed under the MIT Licence, http://opensource.org/licenses/MIT. Documentation is CC Attribution Unported, http://creativecommons.org/licenses/by/3.0/.
+
