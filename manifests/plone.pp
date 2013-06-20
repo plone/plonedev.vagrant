@@ -15,17 +15,17 @@ class plone {
   package { "libxslt-dev":
     ensure => present,
   }
+
+  # coredev dependencies
+  package { "subversion":
+    ensure => present,
+  }
   package { "git":
     ensure => present,
   }
-
-  # Optional packages to enable indexing of office/pdf docs
-  # package { "wv":
-  #   ensure => present,
-  # }
-  # package { "poppler-utils":
-  #   ensure => present,
-  # }
+  package { "python-pip":
+    ensure => present,
+  }
 
   # used for creating a PuTTy-compatible key file
   package { "putty-tools":
