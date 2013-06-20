@@ -1,14 +1,14 @@
-PloneDev-Vagrant
+coredev-Vagrant
 ================
 
-PloneDev-Vagrant is a kit for setting up a — hopefully — easy to use development environment for Plone in a hosted virtual machine.
+coredev-Vagrant is a kit for setting up a Plone coredev environment in a virtual box.
 
 The kit uses the VirtualBox for the virtual machine and the Vagrant box setup system.
 It should run on any host machine for which Vagrant is available; that includes Windows Vista+, OS X and Linux.
 Both VirtualBox and Vagrant are open-source.
 
-The PloneDev-Vagrant kit is meant to be easy to setup and use. 
-Plone's key development files are set up to be accessible and editable with host-based editors. 
+The coredev-Vagrant kit is meant to get you to your first commit quickly.
+Key development files are set up to be accessible and editable with host-based editors.
 Host commands are provided to run Plone and buildout.
 So little or no knowledge of the VirtualBox guest environment (which happens to be Ubuntu Linux) should be required.
 
@@ -21,11 +21,11 @@ Installation
 
 3. If you are using Windows, install the Putty ssh kit: http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html. Install all the binaries, or at least putty.exe and plink.exe.
 
-4. Download and unpack PloneDev-Vagrant https://github.com/smcmahon/plonedev_vagrant/archive/master.zip.
+4. Download and unpack coredev-Vagrant ...
 
-5. Open a command prompt; change directory into the plonedev_vagrant-master directory (twice; it's two folders deep) and issue the command "vagrant up".
+5. Open a command prompt; change directory into the coredev_vagrant-master directory (twice; it's two folders deep) and issue the command "vagrant up".
 
-6. Go for lunch or a long coffee break. "vagrant up" is going to download a virtual box kit (unless you already happen to have a match installed), download Plone, install Plone, and set up some convenience scripts. On Windows, it will also generate an ssh key pair that's usable with Putty.
+6. Go for lunch or a long coffee break. "vagrant up" is going to download a virtual box kit (unless you already happen to have a match installed), clone buildout.coredev and set up some convenience scripts. On Windows, it will also generate an ssh key pair that's usable with Putty.
 
 7. Look to see if the install ran well. The last thing you should see in the command window is a success message from the Plone Unified Installer. The virtual machine will be running at this point.
 
@@ -33,6 +33,8 @@ While running "vagrant up", feel free to ignore messages like "stdin: is not a t
 
 Using the Vagrant-installed VirtualBox
 --------------------------------------
+
+The sample prompts below are for Windows. Linux/BSD/OS X commands are identical.
 
 You may now start and stop the virtual machine by issuing command in the same directory::
 
@@ -51,13 +53,19 @@ Finally, you may remove the VirtualBox (deleting its image) with the command::
 Running Plone and buildout
 --------------------------
 
+The sample commands below are for Windows. Linux/BSD/OS X users will need to use commands like "./buildout.sh".
+
 To run buildout, just issue the command "buildout" (buildout.sh on a Unix-workalike host). This will run buildout; add command line arguments as desired::
 
-    c:\...> buildout -c develop.cfg
+    c:\...> buildout
+
+Expect your first coredev buildout to take some time. It may even timeout. Just run again until it finishes. Subsequent builds will be faster.
 
 To start Plone in the foreground (so its messages run to the command window), use the command::
 
     c:\...> plonectl fg
+
+Note that you will not be able to run Plone until you've run buildout. This is different from plonedev-vagrant.
 
 Plone will be connected to port 8080 on the host machine, so that you should be able to crank up a web browser, point it at http://localhost:8080 and see Zope/Plone.
 

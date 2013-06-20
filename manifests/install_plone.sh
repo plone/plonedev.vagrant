@@ -60,8 +60,8 @@ if [ ! -d ${SHARED_DIR}/${INSTALL_TARGET} ]; then
 fi
 
 for fn in ${COREDEV_D}/*.cfg; do
-    if [ ! -f ${SHARED_DIR}/${INSTALL_TARGET}/$fn ]; then
-        bn=`basename $fn`
+    bn=`basename $fn`
+    if [ ! -f ${SHARED_DIR}/${INSTALL_TARGET}/$bn ]; then
         mv ${COREDEV_D}/$bn ${SHARED_DIR}/${INSTALL_TARGET}
         $AS_VAGRANT ln -s ${SHARED_DIR}/${INSTALL_TARGET}/$bn $COREDEV_D
     fi
