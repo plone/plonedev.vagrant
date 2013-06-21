@@ -133,14 +133,9 @@ The "vagrant@localhost:" specifies the vagrant user on the guest machine.
 What doesn't work
 -----------------
 
-Using "plonectl debug" from the host side isn't going to work. However, you may use your ssh command to get a guest OS prompt and run it there. You'll just need to know a little about how to operate at a Linux "bash" command prompt.
+Using "runbin instance debug" from the host side isn't going to work. However, you may use your ssh command to get a guest OS prompt and run it there. You'll just need to know a little about how to operate at a Linux "bash" command prompt.
 
 The same is true for running ZopeSkel to generate a package skeleton, or doing anything else that requires command-line interaction.
-
-A different version of Plone or Linux?
---------------------------------------
-
-Want to install a different version of Plone? Just edit Vagrantfile to specify a different Unified Installer URL. Do that before running "vagrant up" for the first time. You may do the same thing to specify a different VirtualBox.
 
 What's under the hood
 ---------------------
