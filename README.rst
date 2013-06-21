@@ -55,15 +55,15 @@ Running Plone and buildout
 
 The sample commands below are for Windows. Linux/BSD/OS X users will need to use commands like "./buildout.sh".
 
-To run buildout, just issue the command "buildout" (buildout.sh on a Unix-workalike host). This will run buildout; add command line arguments as desired::
+To run buildout, just issue the command "runbin buildout" (./runbin.sh on a Unix-workalike host). This will run buildout; add command line arguments as desired::
 
-    c:\...> buildout
+    c:\...> runbin buildout
 
 Expect your first coredev buildout to take some time. It may even timeout. Just run again until it finishes. Subsequent builds will be faster.
 
 To start Plone in the foreground (so its messages run to the command window), use the command::
 
-    c:\...> plonectl fg
+    c:\...> runbin instance fg
 
 Note that you will not be able to run Plone until you've run buildout. This is different from plonedev-vagrant.
 
@@ -77,7 +77,9 @@ If you use ctrl-c, you've got a little cleanup to do. Plone will still be runnin
 
     c:\...> kill_plone
 
-You may also use start|stop|status|run arguments with plonectl.
+To run a test suite, use a command like::
+
+    c:\...> runbin test -s plonetheme.sunburst
 
 Editing Plone configuration and source files
 --------------------------------------------
@@ -85,6 +87,25 @@ Editing Plone configuration and source files
 After running "vagrant up", you should have a plone subdirectory. In it, you'll find your buildout configuration files and a "src" directory. These are the matching items from a normal Plone installation. You may add development packages to the src directory and edit all the files.
 
 All of this is happening in a directory that is shared with the guest operating system, and the .cfg files and src directory are linked back to the working copy of Plone on the guest machine.
+
+Making commits
+--------------
+
+To use git, you'll need to use vagrant ssh to get a command prompt on the guest OS.
+Typically, you'll change into the buildout.coredev directory and run commit or push commands::
+
+    c:\...> putty_ssh
+    cd buildout.coredev
+    git commit ...
+    git push
+
+Before committing for the first time, run:
+
+    git config --global user.email "you@example.com"
+    git config --global user.name "Your Name"
+
+buildout.coredev is checked out with an https URL. So, you'll need to supply a username
+and password each time you push. If you don't like that, learn how to use ssh keys and do a new buildout.coredev checkout via ssh.
 
 Using the VirtualBox directly
 -----------------------------
