@@ -21,7 +21,7 @@ Installation
 
 3. If you are using Windows, install the Putty ssh kit: http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html. Install all the binaries, or at least putty.exe and plink.exe.
 
-4. Download and unpack PloneDev-Vagrant https://github.com/smcmahon/plonedev_vagrant/archive/master.zip.
+4. Download and unpack PloneDev-Vagrant https://github.com/plone/plonedev.vagrant/archive/master.zip.
 
 5. Open a command prompt; change directory into the plonedev_vagrant-master directory (twice; it's two folders deep) and issue the command "vagrant up".
 
