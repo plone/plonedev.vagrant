@@ -23,13 +23,22 @@ Installation
 
 4. Download and unpack PloneDev-Vagrant https://github.com/plone/plonedev.vagrant/archive/master.zip.
 
-5. Open a command prompt; change directory into the plonedev_vagrant-master directory (twice; it's two folders deep) and issue the command "vagrant up".
+5. Open a command prompt; change directory into the plonedev.vagrant-master directory
 
 6. Go for lunch or a long coffee break. "vagrant up" is going to download a virtual box kit (unless you already happen to have a match installed), download Plone, install Plone, and set up some convenience scripts. On Windows, it will also generate an ssh key pair that's usable with Putty.
 
 7. Look to see if the install ran well. The last thing you should see in the command window is a success message from the Plone Unified Installer. The virtual machine will be running at this point.
 
 While running "vagrant up", feel free to ignore messages like "stdin: is not a tty" and "warning: Could not retrieve fact fqdn". They have no significance in this context.
+
+Troubleshooting
+~~~~~~~~~~~~~~~
+
+  "Vagrant has detected that you have a version of VirtualBox installed 
+  that is not supported. Please install one of the supported versions
+  listed below to use Vagrant: 4.0, 4.1, 4.2"
+
+You may get this on older versions of Vagrant, upgrade to 1.2.2. https://github.com/mitchellh/vagrant/issues/1856 
 
 Using the Vagrant-installed VirtualBox
 --------------------------------------
