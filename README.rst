@@ -125,6 +125,8 @@ So, plonedev.vagrant sets up a shell alias "zopeskel" that loads zopeskel from ~
 
     vagrant@...: zopeskel dexterity dexterity.project
 
+There is a similar alias for paster.
+
 What doesn't work
 -----------------
 

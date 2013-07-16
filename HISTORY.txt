@@ -1,3 +1,7 @@
+4.3.x (unreleased)
+
+- Add aliases for zopeskel and paster.
+
 4.3.1 (2013-06-19)
 ------------------
 
