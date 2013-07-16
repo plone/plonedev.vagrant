@@ -1,14 +1,14 @@
-PloneDev-Vagrant
+PloneDev.Vagrant
 ================
 
-PloneDev-Vagrant is a kit for setting up an easy to use development environment for Plone in a hosted virtual machine.
+PloneDev.Vagrant is a kit for setting up an easy to use development environment for Plone in a hosted virtual machine.
 
 The kit uses the VirtualBox for the virtual machine and the Vagrant box setup system.
 It should run on any host machine for which Vagrant is available; that includes Windows Vista+, OS X and Linux.
 Both VirtualBox and Vagrant are open-source.
 
-The PloneDev-Vagrant kit is meant to be easy to setup and use. 
-Plone's key development files are set up to be accessible and editable with host-based editors. 
+The PloneDev.Vagrant kit is meant to be easy to setup and use.
+Plone's key development files are set up to be accessible and editable with host-based editors.
 Host commands are provided to run Plone and buildout.
 So little or no knowledge of the VirtualBox guest environment (which happens to be Ubuntu Linux) should be required.
 
@@ -34,11 +34,11 @@ While running "vagrant up", feel free to ignore messages like "stdin: is not a t
 Troubleshooting
 ~~~~~~~~~~~~~~~
 
-  "Vagrant has detected that you have a version of VirtualBox installed 
+  "Vagrant has detected that you have a version of VirtualBox installed
   that is not supported. Please install one of the supported versions
   listed below to use Vagrant: 4.0, 4.1, 4.2"
 
-You may get this on older versions of Vagrant, upgrade to 1.2.2. https://github.com/mitchellh/vagrant/issues/1856 
+You may get this on older versions of Vagrant, upgrade to 1.2.2. https://github.com/mitchellh/vagrant/issues/1856
 
 Using the Vagrant-installed VirtualBox
 --------------------------------------
@@ -110,6 +110,21 @@ Or, the guest to the host::
 
 The "vagrant@localhost:" specifies the vagrant user on the guest machine.
 
+Running zopeskel
+----------------
+
+plonedev.vagrant's trick for making the src files editable from the host poses some problems when you try to run zopeskel. Normally, to run zopeskel to create a new package, you'd do the following::
+
+    c:\...> putty_ssh (or "vagrant ssh" on a Linux/BSD/OSX machine)
+    vagrant@...: cd Plone/zinstance/src
+    vagrant@...: ../bin/zopeskel dexterity dexterity.project
+
+However, "../bin/zopeskel" won't work in this context because the src directory is actually in another location (symbolically linked back into the buildout).
+
+So, plonedev.vagrant sets up a shell alias "zopeskel" that loads zopeskel from ~/Plone/zinstance/bin/zopeskel. So, instead of "../bin/zopeskel", just use "zopeskel"::
+
+    vagrant@...: zopeskel dexterity dexterity.project
+
 What doesn't work
 -----------------
 
@@ -134,7 +149,7 @@ After setting up the operating system, Vagrant's provisioning system is used to 
 Problems or suggestions?
 ------------------------
 
-File a ticket at https://github.com/smcmahon/plonedev_vagrant/issues. If this kit becomes mainstream, the tracker may move to http://dev.plone.org.
+File a ticket at http://dev.plone.org. Make sure you mention that the component is plonedev.vagrant.
 
 Steve McMahon, steve@dcn.org
 

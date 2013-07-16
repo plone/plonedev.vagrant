@@ -73,3 +73,7 @@ do
         chmod 755 *.sh
     fi
 done
+# code above will skip .* files
+if [ ! -f .bash_aliases ]; then
+    $AS_VAGRANT cp ${SHARED_DIR}/manifests/guest_scripts/.bash_aliases .
+fi
