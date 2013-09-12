@@ -1,4 +1,6 @@
-4.3.x (unreleased)
+4.3.2 (2013-09-12)
+
+- Adapt to Plone 4.3.2.
 
 - Add aliases for zopeskel and paster.
 
