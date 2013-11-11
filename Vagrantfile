@@ -10,6 +10,9 @@ Vagrant::Config.run do |config|
 
     config.vm.forward_port 8080, 8080
 
+    config.vm.customize ["modifyvm", :id, "--memory", "1024"]
+    vb.customize ["modifyvm", :id, "--name", "plonedev" ]
+
     # Run apt-get update as a separate step in order to avoid
     # package install errors
     config.vm.provision :puppet do |puppet|
