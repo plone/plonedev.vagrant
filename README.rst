@@ -98,7 +98,7 @@ If your host OS is Windows, use::
 
     c:\...> putty_ssh
 
-The "putty_ssh command" runs the Putty SSH program using command line parameters that connect to the virtual machine at port 2222 and use a special ssh key created for putty. That key, by the way, is created and stored in a way that is not password-protected, so it should not be regarded as adequately secured for any sensitive purpose.
+The "putty_ssh" command runs the Putty SSH program using command line parameters that connect to the virtual machine at port 2222 and use a special ssh key created for putty. That key, by the way, is created and stored in a way that is not password-protected, so it should not be regarded as adequately secured for any sensitive purpose.
 
 For Windows users, we also have a convenience wrapper around pscp, the putty version of secure copy. To copy from the host to the guest::
 
