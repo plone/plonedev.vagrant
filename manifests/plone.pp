@@ -20,7 +20,10 @@ class plone {
   }
   package { "libz-dev":
     ensure => present,
- }
+  }
+  package { "libssl-dev":
+    ensure => present,
+  }
 
   # Optional packages to enable indexing of office/pdf docs
   # package { "wv":
