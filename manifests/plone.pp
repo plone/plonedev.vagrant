@@ -18,6 +18,9 @@ class plone {
   package { "git":
     ensure => present,
   }
+  package { "libz-dev":
+    ensure => present,
+ }
 
   # Optional packages to enable indexing of office/pdf docs
   # package { "wv":

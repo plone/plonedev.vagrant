@@ -38,7 +38,9 @@ Troubleshooting
   that is not supported. Please install one of the supported versions
   listed below to use Vagrant: 4.0, 4.1, 4.2"
 
-You may get this on older versions of Vagrant, upgrade to 1.2.2. https://github.com/mitchellh/vagrant/issues/1856
+You may get this on older versions of Vagrant, upgrade to 1.2.2-1 https://github.com/mitchellh/vagrant/issues/1856
+
+You should consider to download Vagrant from http://www.vagrantup.com/downloads.html, this will get you the latest version.
 
 Using the Vagrant-installed VirtualBox
 --------------------------------------
