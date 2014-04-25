@@ -1,5 +1,11 @@
-4.3.2 (2013-09-12)
+4.3.3 (2014-04-25)
+------------------
 
+- Update to Plone 4.3.3
+_ Update to Ubuntu 14.04 LTS
+
+4.3.2 (2013-09-12)
+------------------
 - Adapt to Plone 4.3.2.
 
 - Add aliases for zopeskel and paster.
