@@ -4,6 +4,7 @@
 - Update to Plone 4.3.3
 - Update to Ubuntu 14.04 LTS
 - Update Readme with link to Vagrant Download Page
+- Add Package "libz-dev"
 
 4.3.2 (2013-09-12)
 ------------------
