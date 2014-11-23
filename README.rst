@@ -23,7 +23,7 @@ Installation
 
 4. Download and unpack PloneDev-Vagrant https://github.com/plone/plonedev.vagrant/archive/master.zip.
 
-5. Open a command prompt; change directory into the plonedev.vagrant-master directory. Run "vagrant up".
+5. Open a command prompt; change directory into the plonedev.vagrant-master directory. Run "vagrant up". (On late versions of Windows, you'll need to open an administrative command prompt.)
 
 6. Go for lunch or a long coffee break. "vagrant up" is going to download a virtual box kit (unless you already happen to have a match installed), download Plone, install Plone, and set up some convenience scripts. On Windows, it will also generate an ssh key pair that's usable with Putty.
 
