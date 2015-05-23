@@ -5,7 +5,7 @@
 UI_URL=$1
 UI_OPTIONS=$2
 
-AS_VAGRANT="sudo -u vagrant"
+AS_VAGRANT="sudo -u vagrant -H"
 SHARED_DIR="/vagrant"
 SHARED_FILES="src buildout.cfg base.cfg develop.cfg"
 VHOME="/home/vagrant"

@@ -153,7 +153,7 @@ After setting up the operating system, Vagrant's provisioning system is used to 
 Problems or suggestions?
 ------------------------
 
-File a ticket at http://dev.plone.org. Make sure you mention that the component is plonedev.vagrant.
+File a ticket at https://github.com/plone/plonedev.vagrant/issues.
 
 Steve McMahon, steve@dcn.org
 
