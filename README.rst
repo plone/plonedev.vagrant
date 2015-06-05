@@ -9,8 +9,7 @@ Both VirtualBox and Vagrant are open-source.
 
 The PloneDev.Vagrant kit is meant to be easy to setup and use.
 Plone's key development files are set up to be accessible and editable with host-based editors.
-Host commands are provided to run Plone and buildout.
-So little or no knowledge of the VirtualBox guest environment (which happens to be Ubuntu Linux) should be required.
+Host commands are provided to run Plone and buildout, so little or no knowledge of the VirtualBox guest environment (which happens to be Ubuntu Linux) should be required.
 
 Installation
 ------------
@@ -21,7 +20,7 @@ Installation
 
 3. If you are using Windows, install the Putty ssh kit: http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html. Install all the binaries, or at least putty.exe and plink.exe.
 
-4. Download and unpack PloneDev-Vagrant https://github.com/plone/plonedev.vagrant/archive/master.zip.
+4. Download and unpack PloneDev-Vagrant https://github.com/plone/plonedev.vagrant/archive/master.zip. Or clone a copy from https://github.com/plone/plonedev.vagrant.
 
 5. Open a command prompt; change directory into the plonedev.vagrant-master directory. Run "vagrant up". (On late versions of Windows, you'll need to open an administrative command prompt.)
 
@@ -52,6 +51,8 @@ You may now start and stop the virtual machine by issuing command in the same di
 stops the virtual machine, saving an image of its state so that you may later restart with::
 
     c:\...> vagrant resume
+
+Likewise, "vagrant halt" stops the virtual machine and frees its memory on the host. "vagrant up" restarts the same virtual machine.
 
 Run "vagrant" with no command line arguments to see what else you can do.
 
