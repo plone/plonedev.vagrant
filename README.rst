@@ -112,22 +112,20 @@ Or, the guest to the host::
 
 The "vagrant@localhost:" specifies the vagrant user on the guest machine.
 
-Running zopeskel
-----------------
+Running mr.bob
+--------------
 
-plonedev.vagrant's trick for making the src files editable from the host poses some problems when you try to run zopeskel. Normally, to run zopeskel to create a new package, you'd do the following::
+plonedev.vagrant's trick for making the src files editable from the host poses some problems when you try to run mr.bob. Normally, to run mr.bob to create a new package, you'd do the following::
 
     c:\...> putty_ssh (or "vagrant ssh" on a Linux/BSD/OSX machine)
     vagrant@...: cd Plone/zinstance/src
-    vagrant@...: ../bin/zopeskel dexterity dexterity.project
+    vagrant@...: ../bin/mrbob -O my.newpackage bobtemplates:plone_addon
 
-However, "../bin/zopeskel" won't work in this context because the src directory is actually in another location (symbolically linked back into the buildout).
+However, "../bin/mrbob" won't work in this context because the src directory is actually in another location (symbolically linked back into the buildout).
 
-So, plonedev.vagrant sets up a shell alias "zopeskel" that loads zopeskel from ~/Plone/zinstance/bin/zopeskel. So, instead of "../bin/zopeskel", just use "zopeskel"::
+So, plonedev.vagrant sets up a shell alias "mrbob" that loads mrbob from ~/Plone/zinstance/bin/mrbob. So, instead of "../bin/mrbob", just use "mrbob"::
 
-    vagrant@...: zopeskel dexterity dexterity.project
-
-There is a similar alias for paster.
+    vagrant@...: mrbob -O my.newpackage bobtemplates:plone_addon
 
 What doesn't work
 -----------------

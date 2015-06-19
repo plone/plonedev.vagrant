@@ -115,29 +115,27 @@ O, de la máquina virtual a la máquina principal::
 
 La cadena "vagrant@localhost:" especifica el usuario 'vagrant' en la máquina virtual.
 
-Ejecutando zopeskel
+Ejecutando mr.bob
 ----------------
 
-El truco de plonedev.vagrant para hacer los archivos fuentes modificables desde la máquina principal plantea un problema cuando se trata de ejecutar *zopeskel*. Normalmente, para ejecutar *zopeskel* y crear un nuevo paquete, se haría lo siguiente::
+El truco de plonedev.vagrant para hacer los archivos fuentes modificables desde la máquina principal plantea un problema cuando se trata de ejecutar *mr.bob*. Normalmente, para ejecutar *mr.bob* y crear un nuevo paquete, se haría lo siguiente::
 
     c:\...> putty_ssh (o "vagrant ssh" en una máquina Linux/BSD/OSX)
     vagrant@...: cd Plone/zinstance/src
-    vagrant@...: ../bin/zopeskel dexterity dexterity.project
+    vagrant@...: ../bin/mrbob -O my.newpackage bobtemplates:plone_addon
 
-Sin embargo, "../bin/zopeskel" no va a funcionar en este contexto porque el archivo *src* se encuentra en otra ubicación (enlazado simbólicamente hacia el *buildout*).
+Sin embargo, "../bin/mrbob" no va a funcionar en este contexto porque el archivo *src* se encuentra en otra ubicación (enlazado simbólicamente hacia el *buildout*).
 
-Así que, plonedev.vagrant establece un *alias* de *shell* para *zopeskel*, que lo ejecuta desde ~/Plone/zinstance/bin/zopeskel. Así, en vez de "../bin/zopeskel", sólo use "zopeskel"::
+Así que, plonedev.vagrant establece un *alias* de *shell* para *mrbob*, que lo ejecuta desde ~/Plone/zinstance/bin/mrbob. Así, en vez de "../bin/mrbob", sólo use "mrbob"::
 
-    vagrant@...: zopeskel dexterity dexterity.project
-
-Existe un *alias* similar para la utilidad *paster*.
+    vagrant@...: mrbob -O my.newpackage bobtemplates:plone_addon
 
 Lo que no funciona
 -----------------
 
 Usar "plonectl debug" desde la máquina principal tampoco va a funcionar. Sin embargo, usted puede usar una línea de comando a través de ssh para obtener un *shell* dentro de la máquina virtual y ejecutarlo desde allí. Solo necesitará saber un poco sobre como usar la línea de comandos de *bash* en *Linux*.
 
-Lo mismo es válido para ejecutar *ZopeSkel* para generar el esqueleto de paquete, o para hacer cualquier otra cosa que requiera interacción en la línea de comandos.
+Lo mismo es válido para ejecutar *mr.bob* para generar el esqueleto de paquete, o para hacer cualquier otra cosa que requiera interacción en la línea de comandos.
 
 ¿Una versión diferente de Plone o de Linux?
 --------------------------------------
