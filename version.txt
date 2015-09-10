@@ -1,1 +1,1 @@
-4.3.6
+4.3.6r1 (incorporates Products.PloneHotfix20150910==1.0)
