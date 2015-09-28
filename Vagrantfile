@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-UI_URL = "https://launchpad.net/plone/4.3/4.3.6/+download/Plone-4.3.6r1-UnifiedInstaller.tgz"
+UI_URL = "https://launchpad.net/plone/4.3/4.3.7/+download/Plone-4.3.7-UnifiedInstaller.tgz"
 UI_OPTIONS = "standalone --password=admin"
 
 Vagrant.configure("2") do |config|
