@@ -1,3 +1,7 @@
+5.0 (2015-09-28)
+
+- Update to Plone 5.0
+
 5.0rc3 (2015-09-22)
 
 - Update to Plone 5.0rc3
