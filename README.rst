@@ -42,33 +42,69 @@ You may get this on older versions of Vagrant, upgrade to 1.2.2-1 https://github
 
 You should consider to download Vagrant from http://www.vagrantup.com/downloads.html, this will get you the latest version.
 
+Commands key
+~~~~~~~~~~~~
+
+There are two versions of each command example in the instructions that follow. The version beginning with `c:\...>` is for Windows users. The version beginning with `$` is for OS X, Linux, BSD and Unix users. All commands are executed from the directory containing your Vagrantfile
+
 Using the Vagrant-installed VirtualBox
 --------------------------------------
 
-You may now start and stop the virtual machine by issuing command in the same directory::
+You may now start and stop the virtual machine by issuing command in the same directory:
+
+Windows::
 
     c:\...> vagrant suspend
 
-stops the virtual machine, saving an image of its state so that you may later restart with::
+OS X, Linux::
+
+    $ vagrant suspend
+
+
+stops the virtual machine, saving an image of its state so that you may later restart with:
+
+Windows::
 
     c:\...> vagrant resume
 
+OS X, Linux::
+
+    $ vagrant resume
+
 Run "vagrant" with no command line arguments to see what else you can do.
 
-Finally, you may remove the VirtualBox (deleting its image) with the command::
+Finally, you may remove the VirtualBox (deleting its image) with the command:
+
+Windows::
 
     c:\...> vagrant destroy
+
+OS X, Linux::
+
+    $ vagrant destroy
 
 Running Plone and buildout
 --------------------------
 
-To run buildout, just issue the command "buildout" (buildout.sh on a Unix-workalike host). This will run buildout; add command line arguments as desired::
+To run buildout, just issue the command "buildout" (buildout.sh on a Unix-workalike host). This will run buildout; add command line arguments as desired:
+
+Windows::
 
     c:\...> buildout -c develop.cfg
 
-To start Plone in the foreground (so its messages run to the command window), use the command::
+OS X, Linux::
+
+    $ ./buildout.sh -c develop.cfg
+
+To start Plone in the foreground (so its messages run to the command window), use the command:
+
+Windows::
 
     c:\...> plonectl fg
+
+OS X, Linux::
+
+    $ ./plonectl.sh fg
 
 Plone will be connected to port 8080 on the host machine, so that you should be able to crank up a web browser, point it at http://localhost:8080 and see Zope/Plone.
 
@@ -76,9 +112,15 @@ Plone is installed with an administrative user with id "admin" and password "adm
 
 Stop foreground Plone by using the site-setup maintenance stop button or by just pressing ctrl-c.
 
-If you use ctrl-c, you've got a little cleanup to do. Plone will still be running on the virtual box. Kill it with the command::
+If you use ctrl-c, you've got a little cleanup to do. Plone will still be running on the virtual box. Kill it with the command:
+
+Windows::
 
     c:\...> kill_plone
+
+OS X, Linux::
+
+    $ ./kill_plone.sh
 
 You may also use start|stop|status|run arguments with plonectl.
 
