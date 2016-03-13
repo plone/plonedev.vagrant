@@ -1,0 +1,9 @@
+---
+
+- hosts: all
+
+
+  pre_tasks:
+
+    - name: Update packages via apt
+      apt: upgrade=dist update_cache=yes

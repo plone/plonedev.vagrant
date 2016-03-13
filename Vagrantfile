@@ -15,28 +15,32 @@ Vagrant.configure("2") do |config|
         vb.customize ["modifyvm", :id, "--name", "plonedev" ]
     end
 
-    # Run apt-get update as a separate step in order to avoid
-    # package install errors
-    config.vm.provision :puppet do |puppet|
-        puppet.manifests_path = "manifests"
-        puppet.manifest_file  = "aptgetupdate.pp"
+    config.vm.provision :ansible_local do |ansible|
+        ansible.playbook = "playbook.yml"
     end
 
-    # ensure we have the packages we need
-    config.vm.provision :puppet do |puppet|
-        puppet.manifests_path = "manifests"
-        puppet.manifest_file  = "plone.pp"
-    end
+    # # Run apt-get update as a separate step in order to avoid
+    # # package install errors
+    # config.vm.provision :puppet do |puppet|
+    #     puppet.manifests_path = "manifests"
+    #     puppet.manifest_file  = "aptgetupdate.pp"
+    # end
 
-    # Create a Putty-style keyfile for Windows users
-    config.vm.provision :shell do |shell|
-        shell.path = "manifests/host_setup.sh"
-        shell.args = RUBY_PLATFORM
-    end
+    # # ensure we have the packages we need
+    # config.vm.provision :puppet do |puppet|
+    #     puppet.manifests_path = "manifests"
+    #     puppet.manifest_file  = "plone.pp"
+    # end
 
-    # install Plone
-        config.vm.provision :shell do |shell|
-        shell.path = "manifests/install_plone.sh"
-        shell.args = UI_URL + " '" + UI_OPTIONS + "'"
-    end
+    # # Create a Putty-style keyfile for Windows users
+    # config.vm.provision :shell do |shell|
+    #     shell.path = "manifests/host_setup.sh"
+    #     shell.args = RUBY_PLATFORM
+    # end
+
+    # # install Plone
+    #     config.vm.provision :shell do |shell|
+    #     shell.path = "manifests/install_plone.sh"
+    #     shell.args = UI_URL + " '" + UI_OPTIONS + "'"
+    # end
 end
