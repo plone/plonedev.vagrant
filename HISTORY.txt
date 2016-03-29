@@ -1,3 +1,9 @@
+5.0.3 2016-03-29
+
+- Switch box to ubuntu/trusty32 in the Vagrant index.
+
+- Update to 5.0.3
+
 5.0.2 2016-01-10
 
 - Update to 5.0.2
