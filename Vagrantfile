@@ -1,12 +1,11 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-UI_URL = "https://launchpad.net/plone/4.3/4.3.8/+download/Plone-4.3.8-UnifiedInstaller.tgz"
+UI_URL = "https://launchpad.net/plone/4.3/4.3.9/+download/Plone-4.3.9-UnifiedInstaller.tgz"
 UI_OPTIONS = "standalone --password=admin"
 
 Vagrant.configure("2") do |config|
-    config.vm.box = "trusty32"
-    config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-i386-vagrant-disk1.box"
+    config.vm.box = "ubuntu/trusty32"
 
     config.vm.network :forwarded_port, guest: 8080, host: 8080
 
