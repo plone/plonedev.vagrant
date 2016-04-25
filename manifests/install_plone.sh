@@ -9,7 +9,7 @@ AS_VAGRANT="sudo -u vagrant -H"
 SHARED_DIR="/vagrant"
 SHARED_FILES="src buildout.cfg base.cfg develop.cfg"
 VHOME="/home/vagrant"
-UI_GLOB="Plone-*-UnifiedInstaller"
+UI_GLOB="Plone-*-UnifiedInstaller*"
 
 if [ ! -f ${UI_GLOB}*.tgz ]; then
     echo Downloading Plone Unified Installer from $UI_URL
