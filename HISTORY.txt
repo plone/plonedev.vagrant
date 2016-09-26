@@ -1,3 +1,9 @@
+4.3.11 2016-09-26
+
+- Update to Plone 4.3.11.
+
+- Disable Vagrant's replacement of default insecure key, as it makes use with Windows very difficult.
+
 4.3.10 2016-07-06
 
 - Update to use Plone 4.3.10.

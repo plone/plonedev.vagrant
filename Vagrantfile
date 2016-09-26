@@ -1,11 +1,12 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-UI_URL = "https://launchpad.net/plone/4.3/4.3.10/+download/Plone-4.3.10-UnifiedInstaller.tgz"
+UI_URL = "https://launchpad.net/plone/4.3/4.3.11/+download/Plone-4.3.11-UnifiedInstaller.tgz"
 UI_OPTIONS = "standalone --password=admin"
 
 Vagrant.configure("2") do |config|
     config.vm.box = "ubuntu/trusty32"
+    config.ssh.insert_key = false
 
     config.vm.network :forwarded_port, guest: 8080, host: 8080
 
