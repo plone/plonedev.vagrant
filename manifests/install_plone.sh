@@ -5,10 +5,10 @@
 UI_URL=$1
 UI_OPTIONS=$2
 
-AS_VAGRANT="sudo -u vagrant -H"
+AS_VAGRANT="sudo -u ubuntu -H"
 SHARED_DIR="/vagrant"
 SHARED_FILES="src buildout.cfg base.cfg develop.cfg"
-VHOME="/home/vagrant"
+VHOME="/home/ubuntu"
 UI_GLOB="Plone-*-UnifiedInstaller*"
 
 if [ ! -f ${UI_GLOB}*.tgz ]; then

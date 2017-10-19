@@ -1,12 +1,12 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-UI_URL = "https://launchpad.net/plone/5.0/5.0.8/+download/Plone-5.0.8-UnifiedInstaller.tgz"
+UI_URL = "https://launchpad.net/plone/5.0/5.1rc1/+download/Plone-5.1rc1-UnifiedInstaller.tgz"
 UI_OPTIONS = "standalone --password=admin"
 
 Vagrant.configure("2") do |config|
-    config.vm.box = "ubuntu/trusty32"
-    config.ssh.insert_key = false
+    config.vm.box = "ubuntu/xenial32"
+#    config.ssh.insert_key = false
 
     config.vm.network :forwarded_port, guest: 8080, host: 8080
 
@@ -15,18 +15,8 @@ Vagrant.configure("2") do |config|
         vb.customize ["modifyvm", :id, "--name", "plonedev" ]
     end
 
-    # Run apt-get update as a separate step in order to avoid
-    # package install errors
-    config.vm.provision :puppet do |puppet|
-        puppet.manifests_path = "manifests"
-        puppet.manifest_file  = "aptgetupdate.pp"
-    end
-
-    # ensure we have the packages we need
-    config.vm.provision :puppet do |puppet|
-        puppet.manifests_path = "manifests"
-        puppet.manifest_file  = "plone.pp"
-    end
+    config.vm.provision "shell", inline: "apt-get update"
+    config.vm.provision "shell", inline: "apt-get install -y build-essential python-dev libjpeg-dev libxml2-dev libxslt-dev git libz-dev libssl-dev wv poppler-utils putty-tools"
 
     # Create a Putty-style keyfile for Windows users
     config.vm.provision :shell do |shell|

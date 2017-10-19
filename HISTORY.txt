@@ -1,3 +1,9 @@
+5.1rc1 2017-10-01
+
+- Update to Plone 5.1rc1.
+
+- Use Xenial32.
+
 5.0.8 2017-06-12
 
 - Update to Plone 5.0.8.
