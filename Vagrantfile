@@ -1,7 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-UI_URL = "https://launchpad.net/plone/5.0/5.1rc1/+download/Plone-5.1rc1-UnifiedInstaller.tgz"
+PACKAGES = "build-essential python-dev libjpeg-dev libxml2-dev libxslt-dev git libz-dev libssl-dev wv poppler-utils"
+UI_URL = "https://launchpad.net/plone/5.1/5.1rc1/+download/Plone-5.1rc1-UnifiedInstaller.tgz"
 UI_OPTIONS = "standalone --password=admin"
 
 Vagrant.configure("2") do |config|
@@ -16,7 +17,7 @@ Vagrant.configure("2") do |config|
     end
 
     config.vm.provision "shell", inline: "apt-get update"
-    config.vm.provision "shell", inline: "apt-get install -y build-essential python-dev libjpeg-dev libxml2-dev libxslt-dev git libz-dev libssl-dev wv poppler-utils putty-tools"
+    config.vm.provision "shell", inline: "apt-get install -y " + PACKAGES
 
     # Create a Putty-style keyfile for Windows users
     config.vm.provision :shell do |shell|

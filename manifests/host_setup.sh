@@ -20,6 +20,7 @@ echo $1 | if grep -q mingw; then
         # append public key to authorized_keys
         cat id_rsa.pub >> authorized_keys
         # create a putty-compatible key file
+        apt-get install putty-tools
         /usr/bin/puttygen id_rsa -O private -o id_rsa.ppk
         # copy putty keyfile into shared directory
         cp id_rsa.ppk ${SHARED_DIR}/insecure_putty_key.ppk
