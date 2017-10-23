@@ -1,8 +1,11 @@
-5.1rc1 2017-10-01
+5.1rc1 2017-10-23
+
+- Drop use of Puppet provisioner, which is no longer included in the Ubuntu/Xenial box.
+  Shell script provisioning turns out to be easier anyway.
 
 - Update to Plone 5.1rc1.
 
-- Use Xenial32.
+- Use Xenial32 to get a later Python.
 
 5.0.8 2017-06-12
 
