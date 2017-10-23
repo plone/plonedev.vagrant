@@ -186,7 +186,7 @@ What's under the hood
 
 VirtualBox provides the virtual machine facilities. Vagrant makes setting it up, including port forwarding and shared folders, convenient. Vagrant also provides a wrapper around the Puppet and shell provisioning system.
 
-The guest operating system is the most recent Ubuntu LTS (14.04, Trusty Tahr), 32-bit (so that it will run on a 32- or 64-bit host).
+The guest operating system is the most recent Ubuntu LTS (16.04, Xenial Xerces), 32-bit (so that it will run on a 32- or 64-bit host).
 
 After setting up the operating system, Vagrant's provisioning system is used to load the required system packages, download the Plone Unified Installer, run the install, and set up the convenience scripts and share directory.
 
