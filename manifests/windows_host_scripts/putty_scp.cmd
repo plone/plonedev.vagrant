@@ -7,8 +7,8 @@ set port=2222
 set prog=pscp.exe
 
 if [%1]==[] (
-    echo usage: %prog% vagrant@localhost:guest_source host_target
-    echo or %prog% host_source vagrant@localhost:guest_target
+    echo usage: %prog% ubuntu@localhost:guest_source host_target
+    echo or %prog% host_source ubuntu@localhost:guest_target
     exit /B
 )
 
