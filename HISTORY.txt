@@ -1,3 +1,7 @@
+5.1rc1-r1 2017-10-28
+
+- Update to use Unified Installer 5.1rc1-r1, which has zc.buildout 2.9.5 to resolve pypi https problems.
+
 5.1rc1 2017-10-23
 
 - Drop use of Puppet provisioner, which is no longer included in the Ubuntu/Xenial box.
