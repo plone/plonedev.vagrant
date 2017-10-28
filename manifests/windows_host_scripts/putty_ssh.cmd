@@ -23,7 +23,7 @@ if [%found%]==[] (
 
 if not exist %keyfile% (
     echo Unable to find the Putty keyfile %keyfile%.
-    echo This file needs to be in the file from which you are executing
+    echo This file needs to be in the directory from which you are executing
     echo this command.
     echo.
     echo %keyfile% is ordinarily generated when you use "vagrant up"
@@ -31,5 +31,5 @@ if not exist %keyfile% (
     exit /B
 )
 
-echo %found% -i %keyfile% -P %port% vagrant@localhost
-%found% -i %keyfile% -P %port% vagrant@localhost
+echo %found% -i %keyfile% -P %port% ubuntu@localhost
+%found% -i %keyfile% -P %port% ubuntu@localhost

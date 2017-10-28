@@ -1,17 +1,17 @@
-#!/bin/sh
+#!/bin/bash
 
 # usage: ./install_plone.sh UI_URL UI_OPTIONS
 
 UI_URL=$1
 UI_OPTIONS=$2
 
-AS_VAGRANT="sudo -u vagrant -H"
+AS_VAGRANT="sudo -u ubuntu -H"
 SHARED_DIR="/vagrant"
 SHARED_FILES="src buildout.cfg base.cfg develop.cfg"
-VHOME="/home/vagrant"
-UI_GLOB="Plone-*-UnifiedInstaller"
+VHOME="/home/ubuntu"
+UI_GLOB="Plone-*-UnifiedInstaller*"
 
-if [ ! -f ${UI_GLOB}*.tgz ]; then
+if [ ! -f ${UI_GLOB}.tgz ]; then
     echo Downloading Plone Unified Installer from $UI_URL
     $AS_VAGRANT wget -q $UI_URL
     if [ $? -gt 0 ]; then
@@ -23,7 +23,7 @@ if [ ! -f ${UI_GLOB}*.tgz ]; then
     fi
 fi
 
-if [ ! -d $UI_GLOB ]; then
+if [ ! -d ${UI_GLOB}/ ]; then
     $AS_VAGRANT tar xf ${UI_GLOB}*.tgz
     if [ $? -gt 0 ]; then
         # remove partial download
@@ -35,7 +35,7 @@ if [ ! -d $UI_GLOB ]; then
 fi
 
 if [ ! -d Plone ]; then
-    cd ${UI_GLOB}
+    cd ${UI_GLOB}/
     echo Running Plone Unified Installer
     $AS_VAGRANT ./install.sh ${UI_OPTIONS} --target=${VHOME}/Plone
     if [ $? -gt 0 ]; then
@@ -44,9 +44,9 @@ if [ ! -d Plone ]; then
         echo Plone install failed
         exit 1
     fi
-    cd ~vagrant/Plone/zinstance
+    cd ${VHOME}/Plone/zinstance
     echo Building developer components
-    sudo -u vagrant bin/buildout -c develop.cfg 2> /dev/null
+    $AS_VAGRANT bin/buildout -c develop.cfg 2> /dev/null
     cd ${VHOME}
 
     # put .cfg and src into the shared directory,

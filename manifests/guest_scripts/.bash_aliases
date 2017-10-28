@@ -1,2 +1,1 @@
-alias zopeskel=~/Plone/zinstance/bin/zopeskel
-alias paster=~/Plone/zinstance/bin/paster
+alias mrbob=~/Plone/zinstance/bin/mrbob
