@@ -7,7 +7,7 @@ UI_OPTIONS = "standalone --password=admin"
 
 Vagrant.configure("2") do |config|
     config.vm.box = "ubuntu/xenial32"
-#    config.ssh.insert_key = false
+    config.ssh.insert_key = false
 
     config.vm.network :forwarded_port, guest: 8080, host: 8080
 
