@@ -1,3 +1,9 @@
+5.1rc2 2017-12-24
+
+- Update to installer 5.1rc2.
+
+- Make vagrant_scp.sh script work.
+
 5.1rc1-r1 2017-10-28
 
 - Update to use Unified Installer 5.1rc1-r1, which has zc.buildout 2.9.5 to resolve pypi https problems.
