@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 PACKAGES = "build-essential python-dev libjpeg-dev libxml2-dev libxslt-dev git libz-dev libssl-dev wv poppler-utils"
-UI_URL = "https://launchpad.net/plone/5.1/5.1.0/+download/Plone-5.1.0-UnifiedInstaller.tgz"
+UI_URL = "https://launchpad.net/plone/5.1/5.1.0/+download/Plone-5.1.0-UnifiedInstaller-r2.tgz"
 UI_OPTIONS = "standalone --password=admin"
 
 Vagrant.configure("2") do |config|
