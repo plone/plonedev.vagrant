@@ -1,6 +1,6 @@
 #!/bin/sh
 
-AS_VAGRANT="sudo -u ubuntu"
+AS_VAGRANT="sudo -u $SUDO_USER"
 SHARED_DIR="/vagrant"
 
 # RUBY_PLATFORM=$1

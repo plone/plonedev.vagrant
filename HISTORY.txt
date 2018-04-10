@@ -1,3 +1,9 @@
+5.1.1 2018-04-10
+
+- Adjust install script to handle mutating vbox user in ubuntu boxes.
+
+- Update to 5.1.1.
+
 5.1.0-r2 2018-03-18
 
 - Update to installer r2.
