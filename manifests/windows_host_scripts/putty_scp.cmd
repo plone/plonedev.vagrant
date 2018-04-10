@@ -2,8 +2,7 @@
 set defpath="\Program Files\PuTTy"
 set defpath_x64="\Program Files (x86)\PuTTy"
 
-set keyfile=insecure_putty_key.ppk
-set port=2222
+set key_file=insecure_putty_key.ppk
 set prog=pscp.exe
 
 if [%1]==[] (
@@ -38,7 +37,7 @@ if not exist %keyfile% (
     exit /B
 )
 
-set command_line=%found% -i %keyfile% -P %port% %1 %2 %3 %4 %5 %6
+set command_line=%found% -i %key_file% -P %ssh_port% %1 %2 %3 %4 %5 %6
 echo %command_line%
 %command_line%
 echo.

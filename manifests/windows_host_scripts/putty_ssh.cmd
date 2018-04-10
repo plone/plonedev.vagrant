@@ -3,7 +3,6 @@ set defpath="\Program Files\PuTTy"
 set defpath_x64="\Program Files (x86)\PuTTy"
 
 set keyfile=insecure_putty_key.ppk
-set port=2222
 set prog=putty.exe
 
 set found=
@@ -31,5 +30,5 @@ if not exist %keyfile% (
     exit /B
 )
 
-echo %found% -i %keyfile% -P %port% ubuntu@localhost
-%found% -i %keyfile% -P %port% ubuntu@localhost
+echo %found% -i %key_file% -P %ssh_port% %ssh_user%@%ssh_host% %1 %2 %3 %4 %5 %6 %7 %8
+%found% -i %key_file% -P %ssh_port% %ssh_user%@%ssh_host% %1 %2 %3 %4 %5 %6 %7 %8

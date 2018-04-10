@@ -6,17 +6,12 @@ UI_URL = "https://launchpad.net/plone/5.1/5.1.1/+download/Plone-5.1.1-UnifiedIns
 UI_OPTIONS = "standalone --password=admin"
 
 
-# We use this provisioner to write the vbox_host.cfg ansible inventory file,
-# which makes it easier to use ansible-playbook directly.
-module AnsibleInventory
+# We use this provisioner to write a DOS cmd file with our ssh config as variables.
+module SSHConfig
     class Plugin < Vagrant.plugin("2")
-        name "write_vbox_cfg"
+        name "write_ssh_config_cmd"
 
-        config(:write_vbox_cfg, :provisioner) do
-            Config
-        end
-
-        provisioner(:write_vbox_cfg) do
+        provisioner(:write_ssh_config_cmd) do
             Provisioner
         end
     end
@@ -37,9 +32,11 @@ module AnsibleInventory
             /Port (?<port>.+)/ =~ output
             /User (?<user>.+)/ =~ output
             /IdentityFile (?<keyfile>.+)/ =~ output
+            # convert to dos drivespec
+            keyfile = keyfile.sub(/^.cygdrive.(.)/, '\1:')
             # write an ansible inventory file
-            contents = "XXXX ansible_ssh_port=#{port} ansible_ssh_host=#{host} ansible_ssh_user=#{user} ansible_ssh_private_key_file=#{keyfile} ansible_ssh_extra_args='-o StrictHostKeyChecking=no'\n"
-            File.open("vbox_host.cfg", "w") do |aFile|
+            contents = "set ssh_port=#{port}\nset ssh_host=#{host}\nset ssh_user=#{user}\nset ssh_private_key_file='#{keyfile}'\nset ssh_extra_args='-o StrictHostKeyChecking=no'\n"
+            File.open("ssh_config.cmd", "w") do |aFile|
               aFile.puts(contents)
             end
           end
@@ -60,10 +57,10 @@ Vagrant.configure("2") do |config|
         vb.customize ["modifyvm", :id, "--name", "plonedev" ]
     end
 
-    myhost.vm.provision "write_vbox_cfg"
+    config.vm.provision "write_ssh_config_cmd"
 
-    config.vm.provision "shell", inline: "apt-get update"
-    config.vm.provision "shell", inline: "apt-get install -y " + PACKAGES
+    # config.vm.provision "shell", inline: "apt-get update"
+    # config.vm.provision "shell", inline: "apt-get install -y " + PACKAGES
 
     # Create a Putty-style keyfile for Windows users
     config.vm.provision :shell do |shell|
