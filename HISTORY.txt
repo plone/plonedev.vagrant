@@ -1,5 +1,11 @@
 5.1.1 2018-04-10
 
+- Adjust windows host scripts to handle mutating vbox user.
+
+- Clean ^Ms from guest-based scripts in case this kit has been loaded from a git checkout that converted to dos style.
+
+- Add explicit specification of vagrant box source URL to make this work with older versions of vagrant.
+
 - Adjust install script to handle mutating vbox user in ubuntu boxes.
 
 - Update to 5.1.1.
