@@ -5,6 +5,7 @@ PACKAGES = "build-essential python-dev libjpeg-dev libxml2-dev libxslt-dev git l
 UI_URL = "https://launchpad.net/plone/5.1/5.1.1/+download/Plone-5.1.1-UnifiedInstaller.tgz"
 UI_OPTIONS = "standalone --password=admin"
 
+Vagrant::DEFAULT_SERVER_URL.replace('https://vagrantcloud.com')
 
 # We use this provisioner to write a DOS cmd file with our ssh config as variables.
 module SSHConfig
