@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-PACKAGES = "build-essential python-dev libjpeg-dev libxml2-dev libxslt-dev git libz-dev libssl-dev wv poppler-utils"
+PACKAGES = "build-essential python-dev libjpeg-dev libxml2-dev libxslt-dev git libz-dev libssl-dev wv poppler-utils dos2unix"
 UI_URL = "https://launchpad.net/plone/5.1/5.1.1/+download/Plone-5.1.1-UnifiedInstaller.tgz"
 UI_OPTIONS = "standalone --password=admin"
 
@@ -48,7 +48,6 @@ end
 
 Vagrant.configure("2") do |config|
     config.vm.box = "ubuntu/xenial32"
-#    config.ssh.insert_key = false
 
     config.vm.network :forwarded_port, guest: 8080, host: 8080
 
@@ -57,10 +56,12 @@ Vagrant.configure("2") do |config|
         vb.customize ["modifyvm", :id, "--name", "plonedev" ]
     end
 
-    config.vm.provision "write_ssh_config_cmd"
+    if RUBY_PLATFORM.include? 'mingw' then
+      config.vm.provision "write_ssh_config_cmd"
+    end
 
-    # config.vm.provision "shell", inline: "apt-get update"
-    # config.vm.provision "shell", inline: "apt-get install -y " + PACKAGES
+    config.vm.provision "shell", inline: "apt-get update"
+    config.vm.provision "shell", inline: "apt-get install -y " + PACKAGES
 
     # Create a Putty-style keyfile for Windows users
     config.vm.provision :shell do |shell|

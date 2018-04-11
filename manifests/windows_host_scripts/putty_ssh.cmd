@@ -30,5 +30,5 @@ if not exist %keyfile% (
     exit /B
 )
 
-echo %found% -i %key_file% -P %ssh_port% %ssh_user%@%ssh_host% %1 %2 %3 %4 %5 %6 %7 %8
-%found% -i %key_file% -P %ssh_port% %ssh_user%@%ssh_host% %1 %2 %3 %4 %5 %6 %7 %8
+echo %found% -i %key_file% -P %ssh_port% %ssh_user%@%ssh_host%
+%found% -i %key_file% -P %ssh_port% %ssh_user%@%ssh_host%
