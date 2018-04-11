@@ -1,4 +1,31 @@
-4.3.15-r2 2017-10-27
+4.3.17 2018-04-11
+
+- Adjust windows host scripts to handle mutating vbox user.
+
+- Clean ^Ms from guest-based scripts in case this kit has been loaded from a git checkout that converted to dos style.
+
+- Add explicit specification of vagrant box source URL to make this work with older versions of vagrant.
+
+- Adjust install script to handle mutating vbox user in ubuntu boxes.
+
+- Update to 4.3.17.
+
+5.1.0-r2 2018-03-18
+
+- Update to installer r2.
+
+5.1.0 2018-03-05
+
+- Update to 5.1.0.
+
+5.1rc2 2017-12-24
+
+- Update to installer 5.1rc2.
+
+- Make vagrant_scp.sh script work.
+
+5.1rc1-r1 2017-10-28
+>>>>>>> master
 
 - Use UI 4.3.15-r2 to get PyPI https fix.
 
