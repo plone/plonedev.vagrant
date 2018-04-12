@@ -1,3 +1,19 @@
+5.0.8-r2 2018-04-12
+
+- Update to installer 5.0.8-r2. Other changes are all backports from 5.1 series.
+
+- Adjust windows host scripts to handle mutating vbox user.
+
+- Clean ^Ms from guest-based scripts in case this kit has been loaded from a git checkout that converted to dos style.
+
+- Add explicit specification of vagrant box source URL to make this work with older versions of vagrant.
+
+- Adjust install script to handle mutating vbox user in ubuntu boxes.
+
+- Update to installer r2.
+
+- Make vagrant_scp.sh script work.
+
 5.0.8-r1 2017-10-28
 
 - Update to use Unified Installer 5.0.8-r1, which has zc.buildout 2.9.5 to resolve pypi https problems.

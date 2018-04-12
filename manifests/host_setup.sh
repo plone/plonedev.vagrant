@@ -1,10 +1,12 @@
 #!/bin/sh
 
-AS_VAGRANT="sudo -u ubuntu"
+AS_VAGRANT="sudo -u $SUDO_USER"
 SHARED_DIR="/vagrant"
 
 # RUBY_PLATFORM=$1
-echo $1 | if grep -q mingw; then
+echo $1 | grep -q mingw
+IS_DOS=$?
+if $IS_DOS; then
     # Host environment is mingw, aka Windows.
     # Let's set up support for using Putty
 
@@ -27,6 +29,16 @@ echo $1 | if grep -q mingw; then
         chmod 400 ${SHARED_DIR}/insecure_putty_key.ppk
         cd ~
     fi
+    if [ ! -f ${SHARED_DIR}/insecure_putty_key.ppk ]; then
+        # create a putty-compatible key file
+        cd .ssh
+        apt-get install putty-tools
+        /usr/bin/puttygen id_rsa -O private -o id_rsa.ppk
+        # copy putty keyfile into shared directory
+        cp id_rsa.ppk ${SHARED_DIR}/insecure_putty_key.ppk
+        chmod 400 ${SHARED_DIR}/insecure_putty_key.ppk
+        cd ~
+    fi
 
     for script in ${SHARED_DIR}/manifests/windows_host_scripts/*
     do
@@ -36,6 +48,10 @@ echo $1 | if grep -q mingw; then
             $AS_VAGRANT cp $script ${SHARED_DIR}
         fi
     done
+
+    cd ~
+    # Converting DOS to Unix line endings.
+    dos2unix *.sh
 else
     # Host environment is probably something *nix
     for script in ${SHARED_DIR}/manifests/host_scripts/*
