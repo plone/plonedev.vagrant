@@ -1,3 +1,7 @@
+5.1.2 2018-05-09
+
+- Update to 5.1.2.
+
 5.1.1 2018-04-10
 
 - Adjust windows host scripts to handle mutating vbox user.
