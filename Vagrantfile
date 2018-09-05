@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 PACKAGES = "build-essential python-dev libjpeg-dev libxml2-dev libxslt-dev git libz-dev libssl-dev wv poppler-utils dos2unix"
-UI_URL = "https://launchpad.net/plone/4.3/4.3.17/+download/Plone-4.3.17-UnifiedInstaller.tgz"
+UI_URL = "https://launchpad.net/plone/4.3/4.3.18/+download/Plone-4.3.18-UnifiedInstaller.tgz"
 UI_OPTIONS = "standalone --password=admin"
 
 # We use this provisioner to write a DOS cmd file with our ssh config as variables.
@@ -46,7 +46,7 @@ end
 
 
 Vagrant.configure("2") do |config|
-    config.vm.box = "ubuntu/xenial32"
+    config.vm.box = "ubuntu/bionic64"
 
     config.vm.network :forwarded_port, guest: 8080, host: 8080
 
