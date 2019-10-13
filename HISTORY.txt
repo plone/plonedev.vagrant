@@ -1,3 +1,7 @@
+5.1.6 2019-10-13
+
+- Update to 5.1.6.
+
 5.0.8-r2 2018-04-12
 
 - Update to installer 5.0.8-r2. Other changes are all backports from 5.1 series.
