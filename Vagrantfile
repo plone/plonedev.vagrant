@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 PACKAGES = "build-essential python-dev libjpeg-dev libxml2-dev libxslt-dev git libz-dev libssl-dev wv poppler-utils dos2unix"
-UI_URL = "https://launchpad.net/plone/5.0/5.0.8/+download/Plone-5.0.8-UnifiedInstaller-r2.tgz"
+UI_URL = "https://launchpad.net/plone/5.1/5.1.6/+download/Plone-5.1.6-UnifiedInstaller.tgz"
 UI_OPTIONS = "standalone --password=admin"
 
 # We use this provisioner to write a DOS cmd file with our ssh config as variables.
