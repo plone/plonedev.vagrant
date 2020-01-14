@@ -1,0 +1,17 @@
+Updating the Plone Development Vagrant
+======================================
+
+This text is for those wishing to update the vagrant to use the latest version of Plone.
+It is not meant to help update an installed vagrant running Plone.
+
+You will want to update the version of Plone in:
+
+- version.txt
+- Vagrantfile
+
+In `Vagrantfile`, you will be updating the `UI_URL` variable value,
+which is the URL where to download the matching Plone Unified Installer.
+
+You will want to add an entry at the top of HISTORY.txt.
+
+
