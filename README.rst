@@ -195,7 +195,7 @@ Problems or suggestions?
 
 File a ticket at https://github.com/plone/plonedev.vagrant/issues.
 
-Steve McMahon, steve@dcn.org
+Kim Nguyen, nguyen@plone.org
 
 License
 -------
