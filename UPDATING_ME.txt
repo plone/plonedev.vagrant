@@ -14,4 +14,13 @@ which is the URL where to download the matching Plone Unified Installer.
 
 You will want to add an entry at the top of HISTORY.txt.
 
+Commit, create a tag (e.g. `5.2.1`) and push your changes:
+
+- git commit
+- git push
+- git tag 5.2.1
+- git push origin 5.2.1
+
+Navigate to the new tag in the repo, e.g. https://github.com/plone/plonedev.vagrant/tree/5.2.1.
+This is the URL to link to from https://plone.org/download
 
