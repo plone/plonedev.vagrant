@@ -3,7 +3,7 @@ class plone {
   package { "build-essential":
     ensure => present,
   }
-  package { "python3-dev":
+  package { "python3.7-dev":
     ensure => present,
   }
   package { "libjpeg-dev":
